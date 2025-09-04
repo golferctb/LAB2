@@ -37,7 +37,6 @@ mypch = ifelse(abs(z)>3, 20,
         ifelse(abs(z)>=2 &abs(z)<=3,21, 22))
 library(lattice)
 # Blue symbolizes possible outliers, while red symbolizes the actual outliers.
-#FIXME: Add title.
 dotplot(mpg$MPG,col=mycol)
 ```
 
@@ -45,7 +44,6 @@ dotplot(mpg$MPG,col=mycol)
 
 ```{r}
 library(ggplot2)
-#FIXME: Add median line.
  ggplot(data = mpg, aes(x = "", y = MPG)) +
       geom_boxplot(fill="black", notch="true") +
       coord_flip() +
@@ -58,6 +56,19 @@ Empirical Formula:
 2. + or - two standard deviation from the mean: 95% of the data will lie there.
 3. + or - three standard deviations from the mean: 99.7% of the data will lie there.
 
+Using Chebyshev’s theorem predict the proportion of data within 2 standard deviations, we can conclude that in this data set, at least 75% of the data is between those parameters.
+
+However, we can get a more exact percentage using r
+
 ```{r}
-#TODO: Finish empiral formula, Chrys. rule.
+length(mpg$MPG[abs(z)<2])/length(mpg$MPG)
 ```
+
+Comparing this output to  Chebyshev's rule, we notice that his rule does agree with the data! R told us 96%, while Chebyshev's rule told us at LEAST 75%. 
+
+For the empirical rule, we know that:
+1) Within 1 standard deviation, 68% of the data is contained
+2) Within 2 standard deviations, 95% of the data is contained.
+3) Within 3 standard deviations, 99.7% of the data is contained.
+
+The empirical rule gives us a MUCH closer estimate than Chebyshev's rule in this case. It should be noted that the empiral rule can ONLY be applied to a standard bell curve.
