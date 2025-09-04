@@ -37,11 +37,19 @@ mypch = ifelse(abs(z)>3, 20,
         ifelse(abs(z)>=2 &abs(z)<=3,21, 22))
 library(lattice)
 # Blue symbolizes possible outliers, while red symbolizes the actual outliers.
+#FIXME: Add title.
 dotplot(mpg$MPG,col=mycol)
 ```
 
 ## Task 4
 
 ```{r}
-boxplot(mpg)
+library(ggplot2)
+#FIXME: Add median line.
+ ggplot(data = mpg, aes(x = "", y = MPG)) +
+      geom_boxplot(, fill="black") +
+      geom_vline(xintercept = median(mpg$MPG), color = "red", linetype = "dashed", size = 1) 
+      coord_flip() +
+      labs(title="MPG Distribution") +
+      theme_minimal()
 ```
