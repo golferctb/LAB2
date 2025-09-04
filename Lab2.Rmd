@@ -52,3 +52,12 @@ library(ggplot2)
       labs(title="MPG Distribution") +
       theme_minimal()
 ```
+
+Empirical Formula:
+1.  + or - one standard deviation from the mean: 68% of the data will lie there.
+2. + or - two standard deviation from the mean: 95% of the data will lie there.
+3. + or - three standard deviations from the mean: 99.7% of the data will lie there.
+
+```{r}
+#TODO: Finish empiral formula, Chrys. rule.
+```
