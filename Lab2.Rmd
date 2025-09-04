@@ -13,9 +13,35 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Tasks
-unks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+## Task 1
+
+```{r}
+getwd()
+list.files()
 ```
 
+## Task 2
+```{r}
+mpg <- read.csv("EPAGAS.csv")
+head(mpg)
+```
+## Task 3
+```{r}
+mpgv <- mpg$MPG
+z <- (mpgv-mean(mpgv))/sd(mpgv)
+# To get potential outliers, we can plot it using a box plot.
+mycol = ifelse(abs(z)>3, "Red",
+        ifelse(abs(z)>=2 &abs(z)<=3,"Blue", "Black"))  
+mypch = ifelse(abs(z)>3, 20,
+        ifelse(abs(z)>=2 &abs(z)<=3,21, 22))
+library(lattice)
+# Blue symbolizes possible outliers, while red symbolizes the actual outliers.
+dotplot(mpg$MPG,col=mycol)
+```
+
+## Task 4
+
+```{r}
+boxplot(mpg)
+```
