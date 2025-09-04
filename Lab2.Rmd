@@ -47,8 +47,7 @@ dotplot(mpg$MPG,col=mycol)
 library(ggplot2)
 #FIXME: Add median line.
  ggplot(data = mpg, aes(x = "", y = MPG)) +
-      geom_boxplot(, fill="black") +
-      geom_vline(xintercept = median(mpg$MPG), color = "red", linetype = "dashed", size = 1) 
+      geom_boxplot(fill="black", notch="true") +
       coord_flip() +
       labs(title="MPG Distribution") +
       theme_minimal()
